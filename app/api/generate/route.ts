@@ -22,12 +22,13 @@ export async function POST(request: Request) {
     const mimeType = response.generatedImages?.[0].image?.mimeType;
 
     return NextResponse.json({
+      success: true,
       imageBytes,
       mimeType,
     });
   } catch (error) {
     return NextResponse.json({
-      status: 500,
+      success: false,
       error:
         error instanceof Error ? error.message : "An unknown error occurred",
     });
